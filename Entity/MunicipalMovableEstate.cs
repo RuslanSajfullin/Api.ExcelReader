@@ -5,7 +5,7 @@ namespace Entity
 {
     /// <summary> Муниципальное движимое имущество </summary>
     [Table("municipal_movable_estate")]
-    public class MunicipalMovableEstate : PersistentEntity
+    public class MunicipalMovableEstate : BasetEntity
     {
         /// <summary> Реестровый номер </summary>
         [Column("registry_number")]

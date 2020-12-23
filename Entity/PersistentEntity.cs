@@ -1,20 +1,23 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace Entity
 {
     /// <summary> Базовая сущность (Id, ObjectCreateDate, ObjectEditDate, Version, IsDeleted, CreatedOperatorId) </summary>
-    public abstract class PersistentEntity
+    public abstract class BasetEntity
     {
         /// <summary> Идентификатор </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         /// <summary> Дата создания </summary>
-    
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime ObjectCreateDate { get; set; }
 
         /// <summary> Дата изменения </summary>
-   
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime ObjectEditDate { get; set; }
 
         /// <summary> Версия </summary>
