@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="18.4.0.31" />
+    <PackageReference Include="Syncfusion.XlsIORenderer.Net.Core" Version="18.4.0.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj" />
+  </ItemGroup>
+
+</Project>

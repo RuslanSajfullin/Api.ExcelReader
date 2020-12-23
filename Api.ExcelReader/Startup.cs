@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ParsExcel;
+using Syncfusion.XlsIO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +30,10 @@ namespace Api.ExcelReader
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+
+            //services.AddTransient(Class1, Class1);
+
+           services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api.ExcelReader", Version = "v1" });
             });
