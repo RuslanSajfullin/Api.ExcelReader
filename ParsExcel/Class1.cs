@@ -47,66 +47,61 @@ namespace ParsExcel
 
                 MunicipalMovableEstate municipalMovableEstate = new MunicipalMovableEstate();
                 {
-          
                     municipalMovableEstate.RegistryNumber =  listJ[(int)Map1Code.RegistryNumber];
-                    municipalMovableEstate.Name = listJ[3];
+                    municipalMovableEstate.Name = listJ[(int)Map1Code.Name]; 
 
                     int result7;
-                    if (int.TryParse(listJ[7], out result7))
+                    if (int.TryParse(listJ[(int)Map1Code.BalanceCost], out result7))
                         municipalMovableEstate.BalanceCost = result7;
                     else
                         municipalMovableEstate.BalanceCost = 0m;
 
-                    decimal result9;
-                    if (decimal.TryParse(listJ[9], out result9))
-                        municipalMovableEstate.ResidualCost = result9;
+                    decimal result8;
+                    if (decimal.TryParse(listJ[(int)Map1Code.ResidualCost], out result8))
+                        municipalMovableEstate.ResidualCost = result8;
                     else
                         municipalMovableEstate.ResidualCost = 0m;
 
                     DateTime myDate10;
-                    if (DateTime.TryParse(listJ[10], out myDate10))
+                    if (DateTime.TryParse(listJ[(int)Map1Code.CreationTerminationRightDate], out myDate10))
                     {
                         municipalMovableEstate.CreationTerminationRightDate = myDate10;
                     }
-                    municipalMovableEstate.CreationTerminationRightReasonDocumentDetails = listJ[11];
-                    municipalMovableEstate.RightSubject = listJ[12];
-                    municipalMovableEstate.RightHolderFullName = listJ[13];
-                    municipalMovableEstate.OKPOCode = listJ[14];
-                    municipalMovableEstate.RightType = listJ[15];
-                    //municipalMovableEstate.StockCompanyName =
-                    //municipalMovableEstate.StockNumber =
-                    //municipalMovableEstate.NominalStockCost =
-                    //municipalMovableEstate.AuthorisedCapitalSize =
-                    //municipalMovableEstate.PartnershipName =
-                    //municipalMovableEstate.MateriallyResponsiblePerson =
-                    //municipalMovableEstate.TransferredTo =
-                    //municipalMovableEstate.ResidualCost =
-                    //municipalMovableEstate.ResidualCostDeterminationDate =
+                    municipalMovableEstate.CreationTerminationRightReasonDocumentDetails = listJ[(int)Map1Code.CreationTerminationRightReasonDocumentDetails];
+                    municipalMovableEstate.RightSubject = listJ[(int)Map1Code.RightSubject];
+                    municipalMovableEstate.RightHolderFullName = listJ[(int)Map1Code.RightHolderFullName];
+                    municipalMovableEstate.OKPOCode = listJ[(int)Map1Code.OKPOCode];
+                    municipalMovableEstate.RightType = listJ[(int)Map1Code.RightType];
+                    municipalMovableEstate.StockCompanyName = listJ[(int)Map1Code.StockCompanyName];
+                    municipalMovableEstate.StockNumber = listJ[(int)Map1Code.StockNumber];
+                   // municipalMovableEstate.NominalStockCost = listJ[(int)Map1Code.NominalStockCost];
+                    municipalMovableEstate.AuthorisedCapitalSize = listJ[(int)Map1Code.AuthorisedCapitalSize];
+                    municipalMovableEstate.PartnershipName = listJ[(int)Map1Code.PartnershipName];
+                    municipalMovableEstate.MateriallyResponsiblePerson = listJ[(int)Map1Code.MateriallyResponsiblePerson];
+                    municipalMovableEstate.TransferredTo = listJ[(int)Map1Code.TransferredTo];
+                    municipalMovableEstate.ResidualCost = listJ[(int)Map1Code.ResidualCost];
+                    municipalMovableEstate.ResidualCostDeterminationDate = listJ[(int)Map1Code.ResidualCostDeterminationDate];
                     decimal result19;
-                    if (decimal.TryParse(listJ[19], out result19))
+                    if (decimal.TryParse(listJ[(int)Map1Code.AmortizationPercent], out result19))
                         municipalMovableEstate.AmortizationPercent = result19;
                     else
                         municipalMovableEstate.AmortizationPercent = 0;
 
-                    municipalMovableEstate.StructuralDepartment = listJ[20];
-                    municipalMovableEstate.ResponsiblePerson = listJ[21];
-                    municipalMovableEstate.BalanceHolder = listJ[22];
-                    municipalMovableEstate.InventoryNumber = listJ[24];
-                    decimal result25;
-                    if (decimal.TryParse(listJ[25], out result25))
-                        municipalMovableEstate.AmortizationPercent = result25;
-                    else
-                        municipalMovableEstate.AmortizationPercent = 0;
-
-                    //municipalMovableEstate.ObjectKind =
-                    //municipalMovableEstate.Category =
-                    //municipalMovableEstate.PermittedUse =
+                    municipalMovableEstate.StructuralDepartment = listJ[(int)Map1Code.StructuralDepartment];
+                    municipalMovableEstate.ResponsiblePerson = listJ[(int)Map1Code.ResponsiblePerson]; 
+                    municipalMovableEstate.BalanceHolder = listJ[(int)Map1Code.BalanceHolder]; 
+                    municipalMovableEstate.InventoryNumber = listJ[(int)Map1Code.InventoryNumber2].Length > 0 ? listJ[(int)Map1Code.InventoryNumber] + " " + listJ[(int)Map1Code.InventoryNumber2] : listJ[(int)Map1Code.InventoryNumber];
+                    
+                 
+                    municipalMovableEstate.ObjectKind = listJ[(int)Map1Code.ObjectKind];
+                  //  municipalMovableEstate.Category = listJ[(int)Map1Code.Category];
+                  //   municipalMovableEstate.PermittedUse = listJ[(int)Map1Code.PermittedUse];
                     DateTime myDate2;
-                    if (!DateTime.TryParse(listJ[10], out myDate2))
+                    if (!DateTime.TryParse(listJ[(int)Map1Code.CommissioningDate], out myDate2))
                     {
                         municipalMovableEstate.CommissioningDate = myDate2;
                     }
-                    //municipalMovableEstate.IsPublishingProhibited =
+                   // municipalMovableEstate.IsPublishingProhibited = listJ[(int)Map1Code.IsPublishingProhibited];
                 }
                 countries.Add(i, listJ);
             }

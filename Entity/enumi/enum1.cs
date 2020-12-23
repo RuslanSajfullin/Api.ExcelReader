@@ -87,7 +87,7 @@ namespace Entity.enumi
 
         /// <summary> Первоначальная стоимость объекта </summary>
         InitialCost = 24,
-
+     
         /// <summary> Вид объекта (недвижимое, особо ценное движимое, иное движимое) </summary>
         ObjectKind = 25,
 
