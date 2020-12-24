@@ -12,7 +12,7 @@ namespace ParsExcel
         public ExcelD() { 
         }
 
-        public void ReadExcelD()
+        public MunicipalMovableEstate ReadExcelD()
         {
             ExcelEngine excelEngine = new ExcelEngine();
 
@@ -78,7 +78,9 @@ namespace ParsExcel
                     municipalMovableEstate.PartnershipName = listJ[(int)Map1Code.PartnershipName];
                     municipalMovableEstate.MateriallyResponsiblePerson = listJ[(int)Map1Code.MateriallyResponsiblePerson];
                     municipalMovableEstate.TransferredTo = listJ[(int)Map1Code.TransferredTo];
-
+                    municipalMovableEstate.Category = "0"; 
+                    municipalMovableEstate.PermittedUse = "0"; 
+                    municipalMovableEstate.OperatorId = 65; 
                     DateTime myDate11;
                     if (DateTime.TryParse(listJ[(int)Map1Code.ResidualCostDeterminationDate], out myDate11))
                     {
@@ -106,8 +108,11 @@ namespace ParsExcel
                     }
                    // municipalMovableEstate.IsPublishingProhibited = listJ[(int)Map1Code.IsPublishingProhibited];
                 }
+                return municipalMovableEstate; ////////// Убрать 
                 countries.Add(i, listJ);
             }
+
+            return null; ////////// Убрать 
 
             //var a2 = worksheet.Rows[0].Cells[0].Value;
             var a22 = worksheet.Rows[1].Cells[4].Value;

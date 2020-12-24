@@ -38,13 +38,16 @@ namespace Api.ExcelReader.Controllers
         {
          var aa =   this._myDbContext.MunicipalMovableEstate.Where(x => x.BalanceCost > 0 || x.BalanceCost == 0).ToList();
             aa[0].BalanceCost = 6969;
-            this._myDbContext.UpdateRange(aa);
+            //this._myDbContext.UpdateRange(aa);
+            //this._myDbContext.SaveChanges();
+
+
+
+             var excelDa = new ExcelD();
+
+           var a = excelDa.ReadExcelD();
+            this._myDbContext.Add(a);
             this._myDbContext.SaveChanges();
-
-            //var excelDa = new ExcelD();
-
-            //excelDa.ReadExcelD();
-          
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

@@ -31,10 +31,10 @@ namespace Entity
         /// <summary> Удалено? (1 - удалено, 0 - не удалено) </summary>
         [Column("is_deleted")]
         public int IsDeleted { get; set; }
-   
+
         ///// <summary> Оператор, создавший объект </summary>
-        //[JsonIgnore]
-        //[Column("operator_id")]
-        //public virtual Operator CreatedOperator { get; set; }
+        [JsonIgnore]
+        [Column("operator_id")]
+        public virtual long OperatorId { get; set; }
     }
 }
