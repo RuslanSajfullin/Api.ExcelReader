@@ -15,9 +15,9 @@ namespace Entity
     { }
 
     public DbSet<MunicipalMovableEstate> MunicipalMovableEstate { get; set; }
- 
+    public DbSet<MunicipalImmovableEstate> MunicipalImmovableEstate { get; set; }
 
-    public static MyDbContext Create(IConfiguration configuration)
+        public static MyDbContext Create(IConfiguration configuration)
     {
         var connectionstring = configuration.GetConnectionString("connectionstring");
 

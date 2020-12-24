@@ -15,7 +15,7 @@ namespace Api.ExcelReader.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController2 : ControllerBase
+    public class WeatherForecastController3 : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
@@ -27,7 +27,7 @@ namespace Api.ExcelReader.Controllers
         private MunicipalMovableEstate municipalMovableEstateData;
         private MyDbContext _myDbContext;
 
-        public WeatherForecastController2(ILogger<WeatherForecastController> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate, ExcelD ExcelD, ExcelD2 ExcelD2)
+        public WeatherForecastController3(ILogger<WeatherForecastController> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate, ExcelD ExcelD, ExcelD2 ExcelD2)
         {
             _excelD2 = ExcelD2;
             _excelD = ExcelD;
@@ -45,17 +45,14 @@ namespace Api.ExcelReader.Controllers
             //this._myDbContext.SaveChanges();
 
             var municipalMovableEstateList2 = this._excelD2.ReadExcelD();
-            var municipalMovableEstateList = this._excelD.ReadExcelD();
 
-            foreach (var municipalMovableEstate in municipalMovableEstateList)
+            foreach (var municipalMovableEstate in municipalMovableEstateList2)
             {
-                if (municipalMovableEstate.BalanceCost != 0 || municipalMovableEstate.OKPOCode != "" || municipalMovableEstate.Name != "")
-                {
                     this._myDbContext.Add(municipalMovableEstate);
                     this._myDbContext.SaveChanges();
-                }
+                
             }
-            //this._myDbContext.AddRange(a);
+            //this._myDbContext.AddRange(municipalMovableEstateList2);
             //this._myDbContext.SaveChanges();
 
             var rng = new Random();

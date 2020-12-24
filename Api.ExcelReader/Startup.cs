@@ -46,6 +46,9 @@ namespace Api.ExcelReader
 
             services.AddTransient<MunicipalMovableEstate>();
 
+            services.AddTransient<ExcelD>();
+            services.AddTransient<ExcelD2>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api.ExcelReader", Version = "v1" });
