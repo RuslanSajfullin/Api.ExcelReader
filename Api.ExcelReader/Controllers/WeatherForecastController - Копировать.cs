@@ -7,6 +7,9 @@ using Syncfusion.XlsIO;
 using System.IO;
 using Entity;
 using ParsExcel;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
+
 
 namespace Api.ExcelReader.Controllers
 {
@@ -20,15 +23,20 @@ namespace Api.ExcelReader.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private MunicipalMovableEstate municipalMovableEstateData;
+        private MyDbContext _myDbContext;
 
-        public WeatherForecastController2(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController2(ILogger<WeatherForecastController> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate)
         {
             _logger = logger;
+            _myDbContext = myDbContext;
+            municipalMovableEstateData = MunicipalMovableEstate;
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+         var aa =   this._myDbContext.MunicipalMovableEstate.Where(x => x.BalanceCost > 0 || x.BalanceCost == 0).ToList();
             var excelDa = new ExcelD();
 
             excelDa.ReadExcelD();

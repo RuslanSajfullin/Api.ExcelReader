@@ -74,13 +74,17 @@ namespace ParsExcel
                     municipalMovableEstate.RightType = listJ[(int)Map1Code.RightType];
                     municipalMovableEstate.StockCompanyName = listJ[(int)Map1Code.StockCompanyName];
                     municipalMovableEstate.StockNumber = listJ[(int)Map1Code.StockNumber];
-                   // municipalMovableEstate.NominalStockCost = listJ[(int)Map1Code.NominalStockCost];
                     municipalMovableEstate.AuthorisedCapitalSize = listJ[(int)Map1Code.AuthorisedCapitalSize];
                     municipalMovableEstate.PartnershipName = listJ[(int)Map1Code.PartnershipName];
                     municipalMovableEstate.MateriallyResponsiblePerson = listJ[(int)Map1Code.MateriallyResponsiblePerson];
                     municipalMovableEstate.TransferredTo = listJ[(int)Map1Code.TransferredTo];
-                    municipalMovableEstate.ResidualCost = listJ[(int)Map1Code.ResidualCost];
-                    municipalMovableEstate.ResidualCostDeterminationDate = listJ[(int)Map1Code.ResidualCostDeterminationDate];
+
+                    DateTime myDate11;
+                    if (DateTime.TryParse(listJ[(int)Map1Code.ResidualCostDeterminationDate], out myDate11))
+                    {
+                        municipalMovableEstate.ResidualCostDeterminationDate = myDate11;
+                    }
+                   
                     decimal result19;
                     if (decimal.TryParse(listJ[(int)Map1Code.AmortizationPercent], out result19))
                         municipalMovableEstate.AmortizationPercent = result19;
@@ -94,8 +98,7 @@ namespace ParsExcel
                     
                  
                     municipalMovableEstate.ObjectKind = listJ[(int)Map1Code.ObjectKind];
-                  //  municipalMovableEstate.Category = listJ[(int)Map1Code.Category];
-                  //   municipalMovableEstate.PermittedUse = listJ[(int)Map1Code.PermittedUse];
+ 
                     DateTime myDate2;
                     if (!DateTime.TryParse(listJ[(int)Map1Code.CommissioningDate], out myDate2))
                     {

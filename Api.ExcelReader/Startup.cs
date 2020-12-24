@@ -1,7 +1,9 @@
+using Entity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +23,8 @@ namespace Api.ExcelReader
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            using var context = MyDbContext.Create(configuration);
+           // context.Database.Migrate();
         }
 
         public IConfiguration Configuration { get; }
@@ -28,12 +32,21 @@ namespace Api.ExcelReader
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            //services.AddDbContext<MyDbContext>(options =>
+            //{
+            //    options.UseSqlServer(Configuration.GetConnectionString("connectionstring"));
+            //}, ServiceLifetime.Transient);
 
-            //services.AddTransient(Class1, Class1);
+            services.AddEntityFrameworkNpgsql().AddDbContext<MyDbContext>(opt =>
+        opt.UseNpgsql(Configuration.GetConnectionString("connectionstring")));
 
-           services.AddSwaggerGen(c =>
+            // services.AddDbContext<MyDbContext>(options =>
+            //options.UseNpgsql(Configuration.GetConnectionString("connectionstring")));
+
+            services.AddTransient<MunicipalMovableEstate>();
+
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api.ExcelReader", Version = "v1" });
             });
