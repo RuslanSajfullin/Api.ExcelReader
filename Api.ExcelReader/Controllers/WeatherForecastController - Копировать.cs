@@ -37,9 +37,13 @@ namespace Api.ExcelReader.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
          var aa =   this._myDbContext.MunicipalMovableEstate.Where(x => x.BalanceCost > 0 || x.BalanceCost == 0).ToList();
-            var excelDa = new ExcelD();
+            aa[0].BalanceCost = 6969;
+            this._myDbContext.UpdateRange(aa);
+            this._myDbContext.SaveChanges();
 
-            excelDa.ReadExcelD();
+            //var excelDa = new ExcelD();
+
+            //excelDa.ReadExcelD();
           
 
             var rng = new Random();

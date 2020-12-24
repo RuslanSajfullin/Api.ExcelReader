@@ -32,9 +32,9 @@ namespace Entity
         [Column("is_deleted")]
         public int IsDeleted { get; set; }
    
-        /// <summary> Оператор, создавший объект </summary>
-        [JsonIgnore]
-        [Column("operator_id")]
-        public virtual Operator CreatedOperator { get; set; }
+        ///// <summary> Оператор, создавший объект </summary>
+        //[JsonIgnore]
+        //[Column("operator_id")]
+        //public virtual Operator CreatedOperator { get; set; }
     }
 }
