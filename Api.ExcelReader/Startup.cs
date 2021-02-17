@@ -46,8 +46,8 @@ namespace Api.ExcelReader
 
             services.AddTransient<MunicipalMovableEstate>();
 
-            services.AddTransient<ExcelD>();
-            services.AddTransient<ExcelD2>();
+            services.AddTransient<MunicipalMovableEstateExcelD>();
+            services.AddTransient<MunicipalImmovableEstateExcelD2>();
 
             services.AddSwaggerGen(c =>
             {

@@ -9,14 +9,14 @@ using System.Linq;
 
 namespace ParsExcel
 {
-    public class ExcelD : IDaParser
+    public class MunicipalMovableEstateExcelD : IDaParser
     {
 
-        private readonly ILogger<ExcelD> _logger;
+        private readonly ILogger<MunicipalMovableEstateExcelD> _logger;
         private MunicipalMovableEstate municipalMovableEstateData;
         private MyDbContext _myDbContext;
 
-        public ExcelD(ILogger<ExcelD> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate)
+        public MunicipalMovableEstateExcelD(ILogger<MunicipalMovableEstateExcelD> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate)
         {
             _logger = logger;
             _myDbContext = myDbContext;
@@ -58,6 +58,13 @@ namespace ParsExcel
                 MunicipalMovableEstate municipalMovableEstate = new MunicipalMovableEstate();
                 {
                     municipalMovableEstate.Name = listJ[(int)Map1Code.Name].Length > 500 ? listJ[(int)Map1Code.Name].Substring(0, 499) : listJ[(int)Map1Code.Name];
+                    municipalMovableEstate.Address = listJ[(int)Map1Code.Address].Length > 500 ? listJ[(int)Map1Code.Address].Substring(0, 499) : listJ[(int)Map1Code.Address];
+               
+                    decimal result5;
+                    if (decimal.TryParse(listJ[(int)Map1Code.RunningMeter], out result5))
+                        municipalMovableEstate.RunningMeter = result5;
+                    else
+                        municipalMovableEstate.RunningMeter = 0m;
 
                     int result7;
                     if (int.TryParse(listJ[(int)Map1Code.BalanceCost], out result7))

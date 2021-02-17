@@ -15,19 +15,19 @@ namespace Api.ExcelReader.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController3 : ControllerBase
+    public class WeatherForecastController2 : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-        private readonly ExcelD2 _excelD2;
-        private readonly ExcelD _excelD;
+        private readonly MunicipalImmovableEstateExcelD2 _excelD2;
+        private readonly MunicipalMovableEstateExcelD _excelD;
         private readonly ILogger<WeatherForecastController> _logger;
         private MunicipalMovableEstate municipalMovableEstateData;
         private MyDbContext _myDbContext;
 
-        public WeatherForecastController3(ILogger<WeatherForecastController> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate, ExcelD ExcelD, ExcelD2 ExcelD2)
+        public WeatherForecastController2(ILogger<WeatherForecastController> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate, MunicipalMovableEstateExcelD ExcelD, MunicipalImmovableEstateExcelD2 ExcelD2)
         {
             _excelD2 = ExcelD2;
             _excelD = ExcelD;
@@ -44,15 +44,18 @@ namespace Api.ExcelReader.Controllers
             //this._myDbContext.UpdateRange(aa);
             //this._myDbContext.SaveChanges();
 
-            var municipalMovableEstateList2 = this._excelD2.ReadExcelD();
+    
+            var municipalMovableEstateList = this._excelD.ReadExcelD();
 
-            foreach (var municipalMovableEstate in municipalMovableEstateList2)
+            foreach (var municipalMovableEstate in municipalMovableEstateList)
             {
+                if (municipalMovableEstate.BalanceCost != 0 || municipalMovableEstate.OKPOCode != "" || municipalMovableEstate.Name != "" || municipalMovableEstate.Address != "")
+                {
                     this._myDbContext.Add(municipalMovableEstate);
                     this._myDbContext.SaveChanges();
-                
+                }
             }
-            //this._myDbContext.AddRange(municipalMovableEstateList2);
+            //this._myDbContext.AddRange(a);
             //this._myDbContext.SaveChanges();
 
             var rng = new Random();

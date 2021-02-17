@@ -9,14 +9,14 @@ using System.Linq;
 
 namespace ParsExcel
 {
-    public class ExcelD2 : IDaParser
+    public class MunicipalImmovableEstateExcelD2 : IDaParser
     {
 
-        private readonly ILogger<ExcelD> _logger;
+        private readonly ILogger<MunicipalMovableEstateExcelD> _logger;
         private MunicipalMovableEstate municipalMovableEstateData;
         private MyDbContext _myDbContext;
 
-        public ExcelD2(ILogger<ExcelD> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate)
+        public MunicipalImmovableEstateExcelD2(ILogger<MunicipalMovableEstateExcelD> logger, MyDbContext myDbContext, MunicipalMovableEstate MunicipalMovableEstate)
         {
             _logger = logger;
             _myDbContext = myDbContext;

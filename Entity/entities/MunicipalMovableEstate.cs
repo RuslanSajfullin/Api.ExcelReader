@@ -126,5 +126,13 @@ namespace Entity
         /// <summary> Запрет публикации информации (Запрещена публикации информации?) </summary>
         [Column("is_publishing_prohibited")]
         public bool IsPublishingProhibited { get; set; }
+
+        /// <summary> Адрес (местоположение) </summary>
+        [Column("address")]
+        public string Address { get; set; }
+
+        /// <summary> Количество штук или погоных метров </summary>
+        [Column("running_meter")]
+        public decimal? RunningMeter { get; set; }
     }
 }

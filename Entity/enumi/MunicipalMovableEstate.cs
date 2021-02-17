@@ -17,6 +17,10 @@ namespace Entity.enumi
         /// <summary> Наименование </summary>
         Name = 3,
 
+        Address = 4,
+            /// <summary> Количество штук или погоных метров </summary>
+        RunningMeter =5,
+
         /// <summary> Балансовая (восстановительная) стоимость </summary>
         BalanceCost = 7,
 
